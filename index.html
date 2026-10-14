@@ -19,7 +19,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
+               body {
             background-color: var(--bg-color);
             color: var(--text-color);
             min-height: 100vh;
@@ -28,8 +28,12 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            overflow: hidden;
+            /* CÓDIGO CORRIGIDO ABAIXO: */
+            overflow-x: hidden; /* Evita que a página balance para os lados */
+            overflow-y: auto;   /* Permite a rolagem para baixo no celular */
             position: relative;
+        }
+
         }
 
         h1 {
