@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Amor ❤️</title>
+    <style>
+        :root {
+            --bg-color: #ffeef2;
+            --card-bg: #ffffff;
+            --text-color: #4a4a4a;
+            --accent-color: #ff6584;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        p.subtitle {
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .grid-cartas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            width: 100%;
+            max-width: 600px;
+            z-index: 10;
+        }
+
+        @media (max-width: 480px) {
+            .grid-cartas {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .carta-container {
+            perspective: 1000px;
+            height: 200px;
+        }
+
+        .carta {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .carta.aberta {
+            transform: rotateY(180deg);
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Frente do Envelope (Fechado) */
+        .frente {
+            background: var(--card-bg);
+            border: 2px dashed var(--accent-color);
+        }
+
+        .frente .envelope-icone {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+
+        .carta:hover .envelope-icone {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .frente span.clique {
+            font-size: 0.85rem;
+            background: var(--bg-color);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* Verso do Envelope (Aberto) */
+        .verso {
+            background: #ffffff;
+            transform: rotateY(180deg);
+            border: 2px solid #ffdae0;
+            justify-content: space-between;
+        }
+
+        .figurinha {
+            font-size: 3.5rem;
+            animation: balanco 2s infinite ease-in-out;
+        }
+
+        .mensagem {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #555;
+            margin-top: 5px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes balanco {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+        }
+
+        /* Elemento dos corações da chuva */
+        .coracao-chuva {
+            position: absolute;
+            top: -50px;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 1;
+            animation: cair linear forwards;
+        }
+
+        @keyframes cair {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Para a pessoa mais especial do mundo ❤️</h1>
+    <p class="subtitle">Clica em cada carta para abrir uma surpresa...</p>
+
+    <div class="grid-cartas">
+        <!-- CARTA 1 -->
+        <div class="carta-container">
+            <div class="carta" onclick="controlarCarta(this)">
+                <div class="face frente">
+                    <div class="envelope-icone">✉️</div>
+                    <span class="clique">Abre-me</span>
+                </div>
+                <div class="face verso">
+                    <div class="figurinha">🐱❤️</div>
+                    <div class="mensagem">Um gatinho fofo para te lembrar o quanto o meu mundo fica mais feliz e colorido quando estás por perto!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARTA 2 -->
+        <div class="carta-container">
+            <div class="carta" onclick="controlarCarta(this)">
+                <div class="face frente">
+                    <div class="envelope-icone">✉️</div>
+                    <span class="clique">Abre-me</span>
+                </div>
+                <div class="face verso">
+                    <div class="figurinha">🐻🌟</div>
+                    <div class="mensagem">Só para te deixar um abraço virtual bem apertado. És o meu porto seguro em todos os momentos.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARTA 3 -->
+        <div class="carta-container">
+            <div class="carta" onclick="controlarCarta(this)">
+                <div class="face frente">
+                    <div class="envelope-icone">✉️</div>
+                    <span class="clique">Abre-me</span>
+                </div>
+                <div class="face verso">
+                    <div class="figurinha">🐼🍡</div>
+                    <div class="mensagem">Sabias que és o meu pensamento favorito do dia? Amo cada detalhe em ti e na nossa história.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARTA 4 -->
+        <div class="carta-container">
+            <div class="carta" onclick="controlarCarta(this)">
+                <div class="face frente">
+                    <div class="envelope-icone">✉️</div>
+                    <span class="clique">Abre-me</span>
+                </div>
+                <div class="face verso">
+                    <div class="figurinha">🐰🌸</div>
+                    <div class="mensagem">Um beijo do tamanho do universo! Obrigado por seres a namorada mais incrível que eu poderia pedir.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função que abre a carta ou fecha (e solta a chuva de corações ao sair/fechar)
+        function controlarCarta(elemento) {
+            const estavaAberta = elemento.classList.contains('aberta');
+            
+            // Alterna o estado da carta
+            elemento.classList.toggle('aberta');
+
+            // Se a carta estava aberta e agora vai fechar, solta a chuva!
+            if (estavaAberta) {
+                dispararChuvaDeCoracoes();
+            }
+        }
+
+        // Função que cria o efeito de tempestade/chuva de corações
+        function dispararChuvaDeCoracoes() {
+            const simbolos = ['❤️', '💖', '💝', '💕', '✨', '🌸'];
+            const quantidade = 40; // Quantidade de corações que vão cair de uma vez
+
+            for (let i = 0; i < quantidade; i++) {
+                setTimeout(() => {
+                    const coracao = document.createElement('div');
+                    coracao.classList.add('coracao-chuva');
+                    coracao.innerText = simbolos[Math.floor(Math.random() * simbolos.length)];
+                    
+                    // Posição horizontal aleatória no ecrã
+                    coracao.style.left = Math.random() * 100 + 'vw';
+                    
+                    // Tamanhos variados para dar profundidade
+                    coracao.style.fontSize = Math.random() * 20 + 15 + 'px'; 
+                    
+                    // Velocidades de queda ligeiramente diferentes
+                    const duracao = Math.random() * 2 + 2; // entre 2 e 4 segundos
+                    coracao.style.animationDuration = duracao + 's';
+                    
+                    document.body.appendChild(coracao);
+                    
+                    // Remove o elemento do ecrã assim que a animação termina
+                    setTimeout(() => {
+                        coracao.remove();
+                    }, duracao * 1000);
+                    
+                }, i * 50); // Pequeno atraso entre cada coração para parecer uma chuva natural
+            }
+        }
+    </script>
+</body>
+</html>
